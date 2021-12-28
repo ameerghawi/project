@@ -1,0 +1,48 @@
+!/usr/bin/bash
+
+function ameer {
+    for (( i=1;i<=$1 ;i++))
+    do
+        for (( j=$1;j>=i;j-- ))
+        do
+            echo -n " "
+        done
+        for (( c=1;c<=i;c++ ))
+        do
+            echo -n " *"
+            sum=$(echo "sum +1" | bc)
+          
+        done
+        echo ""
+    done
+
+    maxi=$(echo "$1-1" | bc)
+    maxi=$(($1 - 1))
+    for (( i=$maxi;i>=1;i--))
+    do
+        for (( j=i;j<=$maxi;j++ ))
+        do
+            if [ $j -eq $maxi ]
+            then
+                echo -n " "
+            fi
+            echo -n " "
+        done
+        for (( k=1;k<=$i;k++ ))
+        do
+            echo -n " *"
+            sum=$(echo sum +1 | bc)
+         
+        done
+        echo ""
+    done
+
+}
+read -p "Please Enter an integer: " input
+
+
+if [[ $(($input%2)) -ne 0 ]]; then
+        ameer $input
+else
+        echo Value not perfect
+fi
